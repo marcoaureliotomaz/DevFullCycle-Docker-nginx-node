@@ -12,14 +12,7 @@ const config = {
 };
 
 const connection = mysql.createConnection(config);
-connection.connect(err => {
-  if (err) {
-    console.error('Erro de conexão com MySQL:', err);
-    return;
-  }
-  console.log('Conectado ao MySQL');
-  connection.query(`CREATE TABLE IF NOT EXISTS people (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255))`);
-});
+
 
 app.get('/', (req, res) => {
   connection.query("INSERT INTO people(name) values('Full Cycle Name')", () => {
