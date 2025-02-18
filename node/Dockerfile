@@ -2,11 +2,11 @@ FROM node:15
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
-RUN npm install express --save
+COPY . .
+
 RUN npm install 
 
-COPY . .
+
 
 EXPOSE 3000
 
