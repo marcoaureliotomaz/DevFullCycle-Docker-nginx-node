@@ -49,7 +49,7 @@ services:
       interval: 10s
       timeout: 10s
       retries: 5
-      start_period: 30s  # Aumentando o tempo de espera antes de falhar
+      start_period: 30s  
     networks:
       - node-network
     volumes:
