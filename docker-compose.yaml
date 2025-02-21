@@ -30,7 +30,7 @@ services:
       - DB_PASSWORD=root
       - DB_NAME=nodedb
     networks:
-      - node-network      
+      - node-network
     depends_on:
       db:
         condition: service_healthy
@@ -45,13 +45,13 @@ services:
       - MYSQL_DATABASE=nodedb
       - MYSQL_ROOT_PASSWORD=root
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
-      interval: 5s
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "--silent"]
+      interval: 10s
       timeout: 10s
-      retries: 3
+      retries: 5
+      start_period: 30s  # Aumentando o tempo de espera antes de falhar
     networks:
       - node-network
-
     volumes:
       - ./mysql:/var/lib/mysql
 
